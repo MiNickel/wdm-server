@@ -1,4 +1,4 @@
-import { Request, Response } from "express-serve-static-core";
+import { ParamsDictionary, Request, Response } from "express-serve-static-core";
 import { ParsedQs } from "qs";
 import { ObservedObjectService } from "../services/observed-object.service";
 import Controller from "./controller";
@@ -34,6 +34,46 @@ export class ObservedObjectController extends Controller {
       (req: express.Request, res: express.Response) =>
         this.getStructure(req.params.id, res)
     );
+    this.router.get(
+      "/allStationGPSCoordinates",
+      (req: express.Request, res: express.Response) =>
+        this.getAllStationGPSCoordinates(res)
+    );
+    this.router.put(
+      "/observedObject/:id",
+      (req: express.Request, res: express.Response) =>
+        this.updateObservedObject(req, res)
+    );
+    this.router.post(
+      "/createNewTeilbauwerk",
+      (req: express.Request, res: express.Response) =>
+        this.createNewTeilbauwerk(req, res)
+    );
+  }
+
+  async createNewTeilbauwerk(req: express.Request, res: express.Response) {
+    const station = req.body;
+    const response = await this.observedObjectService.createNewTeilbauwerk(
+      station
+    );
+    res.json(response).status(200);
+  }
+
+  async updateObservedObject(req: express.Request, res: express.Response) {
+    const { id } = req.params;
+    const observedObjectValues: Partial<ObservedObject> = req.body;
+    const response = await this.observedObjectService.updateObservedObject(
+      id,
+      observedObjectValues
+    );
+
+    res.json(response).status(200);
+  }
+
+  async getAllStationGPSCoordinates(res: express.Response) {
+    const response =
+      await this.observedObjectService.getAllStationGPSCoordinates();
+    res.json(response).status(200);
   }
 
   async getStructure(id: string, res: express.Response) {
