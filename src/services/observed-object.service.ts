@@ -113,7 +113,7 @@ export class ObservedObjectService {
       const response = await query(queryText, values);
       return response;
     } catch (error) {
-      console.error("DB Error:", error);
+      logger.error("Error creating an ObservedObject", error);
       throw error;
     }
   }

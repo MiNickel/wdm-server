@@ -1,11 +1,11 @@
 import { Pool, QueryResult, QueryResultRow } from "pg";
 
 const pool = new Pool({
-  user: "app_spundwand",
-  password: "app_spundwand",
-  host: "localhost",
-  port: 5432,
-  database: "spundwand_restructure",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  host: process.env.DB_HOST,
+  port: Number(process.env.DB_PORT),
+  database: process.env.DB_NAME,
 });
 
 export const query = <T extends QueryResultRow>(

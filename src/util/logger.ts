@@ -13,6 +13,14 @@ const logger = winston.createLogger({
     myFormat
   ),
   transports: [new transports.Console()],
+  exceptionHandlers: [
+    new transports.Console({
+      format: winston.format.combine(
+        winston.format.colorize(),
+        winston.format.simple()
+      ),
+    }),
+  ],
 });
 
 export default logger;

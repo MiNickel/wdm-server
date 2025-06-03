@@ -4,6 +4,7 @@ import { ObservedObjectService } from "../services/observed-object.service";
 import Controller from "./controller";
 import express from "express";
 import { ObservedObject } from "../types/observed-object";
+import logger from "../util/logger";
 
 interface IObservedObjectController {}
 
@@ -49,6 +50,16 @@ export class ObservedObjectController extends Controller {
       (req: express.Request, res: express.Response) =>
         this.createNewTeilbauwerk(req, res)
     );
+    this.router.get("/error", (req, res, next) => {
+      try {
+        // Force an error
+        throw new Error("Something went wrong!");
+      } catch (err) {
+        // Pass the error to the error-handling middleware
+        logger.info("test");
+        next(err);
+      }
+    });
   }
 
   async createNewTeilbauwerk(req: express.Request, res: express.Response) {

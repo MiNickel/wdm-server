@@ -6,24 +6,24 @@ export class MeasurementPointController extends Controller {
   private measurementPointService = new MeasurementPointService();
 
   protected initializeRoutes(): void {
-    this.router.put(
-      "/measurementPoint/:id",
+    this.router.post(
+      "/structure/:structureId/actualWallthickness",
       (req: express.Request, res: express.Response) => {
         this.updateMeasurementPointWallThickness(req, res);
       }
     );
-
-    this.router.put("/")
   }
 
   async updateMeasurementPointWallThickness(
     req: express.Request,
     res: express.Response
   ) {
+    console.log(req.params, req.body);
     const response =
       await this.measurementPointService.updateMeasurementPointWallThickness(
-        req.params.id,
-        req.body.wallThickness
+        req.params.structureId,
+        req.body.actualWallthickness,
+        req.body.sections
       );
 
     res.json(response).status(200);

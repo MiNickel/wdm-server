@@ -18,6 +18,17 @@ class App {
 
     this.initializeMiddleware();
     this.initializeControllers(controllers);
+    this.app.use(
+      (
+        err: any,
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction
+      ) => {
+        logger.error(`Error occurred: ${err.message}`);
+        res.status(500).send("Something went wrong!!!!");
+      }
+    );
   }
 
   private initializeMiddleware = () => {
