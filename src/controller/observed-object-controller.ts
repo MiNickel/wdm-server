@@ -101,7 +101,6 @@ export class ObservedObjectController extends Controller {
     req: express.Request,
     res: express.Response
   ) {
-    console.log(req.query.name);
     const response =
       await this.observedObjectService.getObservedObjectTypeByName(
         req.query.name as string

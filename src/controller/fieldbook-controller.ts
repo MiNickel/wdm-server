@@ -1,8 +1,6 @@
-import { Request, Response } from "express-serve-static-core";
 import { FieldbookService } from "../services/fieldbook.service";
 import Controller from "./controller";
 import express from "express";
-import { ParsedQs } from "qs";
 import { ObservedObjectService } from "../services/observed-object.service";
 
 export class FieldbookController extends Controller {

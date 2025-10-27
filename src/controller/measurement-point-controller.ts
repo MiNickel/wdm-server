@@ -18,7 +18,6 @@ export class MeasurementPointController extends Controller {
     req: express.Request,
     res: express.Response
   ) {
-    console.log(req.params, req.body);
     const response =
       await this.measurementPointService.updateMeasurementPointWallThickness(
         req.params.structureId,
