@@ -16,6 +16,13 @@ export class FieldbookController extends Controller {
     );
   }
 
+  async getFieldbookForStation(req: express.Request, res: express.Response) {
+    const response = await this.fieldbookService.getFieldbookForStation(
+      req.params.id
+    );
+    res.json(response).status(200);
+  }
+
   async getFieldbooksForStructure(req: express.Request, res: express.Response) {
     const stations = await this.observedObjectService.getStationsForStructure(
       req.params.id
@@ -31,12 +38,5 @@ export class FieldbookController extends Controller {
     );
 
     res.json(fieldbooks).status(200);
-  }
-
-  async getFieldbookForStation(req: express.Request, res: express.Response) {
-    const response = await this.fieldbookService.getFieldbookForStation(
-      req.params.id
-    );
-    res.json(response).status(200);
   }
 }
