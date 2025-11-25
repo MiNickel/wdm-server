@@ -15,4 +15,4 @@ coverage/
 .vscode/
 *.swp
 *.swo
-postgres-init/postgres/data
+postgres-init/postgres/
