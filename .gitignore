@@ -15,4 +15,5 @@ coverage/
 .vscode/
 *.swp
 *.swo
-postgres-init/postgres/
+postgres-init/postgres/data
+postgres-init/postgres/dump_hamburg.sql
