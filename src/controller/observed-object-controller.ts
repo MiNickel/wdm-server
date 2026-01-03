@@ -6,8 +6,6 @@ import express from "express";
 import { ObservedObject } from "../types/observed-object";
 import logger from "../util/logger";
 
-interface IObservedObjectController {}
-
 export class ObservedObjectController extends Controller {
   private observedObjectService = new ObservedObjectService();
 
