@@ -9,10 +9,12 @@ export class FieldbookController extends Controller {
 
   protected initializeRoutes(): void {
     /**
-     * @swagger
+     * @openapi
      * /fieldbookForStation/{id}:
      *   get:
-     *     summary: Retrieve a fieldbook for a station
+     *     tags:
+     *       - Feldbuch
+     *     summary: Gibt alle Feldbücher für eine Station zurück
      *     parameters:
      *       - in: path
      *         name: id
@@ -21,7 +23,7 @@ export class FieldbookController extends Controller {
      *           type: integer
      *     responses:
      *       200:
-     *         description: Fieldbook for the station
+     *         description: Feldbuch für die Station
      *         content:
      *           application/json:
      *             schema:
@@ -34,7 +36,9 @@ export class FieldbookController extends Controller {
      * @swagger
      * /fieldbooksForStructure/{id}:
      *   get:
-     *     summary: Retrieve fieldbooks for a structure
+     *     tags:
+     *       - Feldbuch
+     *     summary: Gibt alle Feldbücher für ein (Teil-)Bauwerk zurück
      *     parameters:
      *       - in: path
      *         name: id
@@ -43,7 +47,7 @@ export class FieldbookController extends Controller {
      *           type: integer
      *     responses:
      *       200:
-     *         description: Fieldbooks for the structure
+     *         description: Feldbücher für das (Teil-)Bauwerk
      *         content:
      *           application/json:
      *             schema:

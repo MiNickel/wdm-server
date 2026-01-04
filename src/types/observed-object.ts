@@ -14,3 +14,11 @@ export type ObservedObject = {
   profil_id?: number;
   type_id: number;
 };
+
+export type ObservedObjectType = {
+  id: number;
+  description?: string;
+  flatendsets?: boolean;
+  icon?: string;
+  name: string;
+};
